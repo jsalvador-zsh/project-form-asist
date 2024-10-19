@@ -1,101 +1,171 @@
-import Image from "next/image";
+"use client"; // Asegurar que el componente es un Client Component
+
+import { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import { toast, Toaster } from 'react-hot-toast'; // Importar react-hot-toast
+
+// Esquema de validación con Yup
+const FormSchema = Yup.object().shape({
+  nombres: Yup.string().required('El nombre es requerido'),
+  colegio: Yup.string().required('El colegio es requerido'),
+  edad: Yup.number().required('La edad es requerida'),
+  mensaje: Yup.string().required('El mensaje es requerido'),
+});
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [image, setImage] = useState<File | null>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+  const handleImageChange = (e: any) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleSubmit = async (values: any, { resetForm }: any) => {
+    const formData = new FormData();
+    formData.append('nombres', values.nombres);
+    formData.append('colegio', values.colegio);
+    formData.append('edad', values.edad);
+    formData.append('mensaje', values.mensaje);
+
+    if (image) {
+      formData.append('image', image); // Solo agregar si hay imagen
+    }
+
+    try {
+      await axios.post('/api/submit', formData);
+      toast.success('Formulario enviado exitosamente!'); // Mostrar notificación de éxito
+      resetForm(); // Resetear el formulario
+      setImage(null); // Limpiar el estado de la imagen
+    } catch (error) {
+      toast.error('Error al enviar el formulario. Inténtalo de nuevo.'); // Mostrar notificación de error
+      console.error(error);
+    }
+  };
+
+  return (
+    <div className="px-4 md:px-4 lg:px-0 min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 transition-colors">
+      <div className="w-full max-w-lg bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 space-y-6">
+        <Toaster position="top-right" /> {/* Posición del Toast */}
+        <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
+          Formulario de Asistencia
+        </h1>
+        <Formik
+          initialValues={{ nombres: '', colegio: '', edad: '', mensaje: '' }}
+          validationSchema={FormSchema}
+          onSubmit={handleSubmit}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          {() => (
+            <Form className="space-y-4">
+              {/* Campo de Nombres */}
+              <div>
+                <label
+                  htmlFor="nombres"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  Nombres
+                </label>
+                <Field
+                  id="nombres"
+                  name="nombres"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+                  placeholder="Ingresa tu nombre"
+                />
+                <ErrorMessage
+                  name="nombres"
+                  component="div"
+                  className="text-sm text-red-600 mt-1"
+                />
+              </div>
+
+              {/* Campo de Colegio */}
+              <div>
+                <label
+                  htmlFor="colegio"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  Colegio
+                </label>
+                <Field
+                  id="colegio"
+                  name="colegio"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+                  placeholder="Ingresa el nombre del colegio"
+                />
+                <ErrorMessage
+                  name="colegio"
+                  component="div"
+                  className="text-sm text-red-600 mt-1"
+                />
+              </div>
+
+              {/* Campo de Edad */}
+              <div>
+                <label
+                  htmlFor="edad"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  Edad
+                </label>
+                <Field
+                  id="edad"
+                  name="edad"
+                  type="number"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+                  placeholder="Ingresa tu edad"
+                />
+                <ErrorMessage
+                  name="edad"
+                  component="div"
+                  className="text-sm text-red-600 mt-1"
+                />
+              </div>
+
+              {/* Campo de Mensaje */}
+              <div>
+                <label
+                  htmlFor="mensaje"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  Mensaje
+                </label>
+                <Field
+                  as="textarea"
+                  id="mensaje"
+                  name="mensaje"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+                  placeholder="Ingresa un mensaje"
+                />
+                <ErrorMessage
+                  name="mensaje"
+                  component="div"
+                  className="text-sm text-red-600 mt-1"
+                />
+              </div>
+
+              {/* Campo para Subir Imagen */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Subir Imagen
+                </label>
+                <input
+                  type="file"
+                  onChange={handleImageChange}
+                  className="mt-1 block w-full text-gray-900 dark:text-gray-100 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700"
+                />
+              </div>
+
+              {/* Botón de Enviar */}
+              <button
+                type="submit"
+                className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Enviar
+              </button>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 }
