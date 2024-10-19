@@ -44,7 +44,7 @@ export default function Home() {
   };
 
   return (
-    <div className="px-4 md:px-4 lg:px-0 min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 transition-colors">
+    <div className="my-16 px-4 md:px-4 lg:px-0 flex items-center justify-center">
       <div className="w-full max-w-lg bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 space-y-6">
         <Toaster position="top-right" /> {/* Posición del Toast */}
         <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
@@ -68,7 +68,7 @@ export default function Home() {
                 <Field
                   id="nombres"
                   name="nombres"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-accent focus:border-accent dark:bg-gray-700 dark:text-white"
                   placeholder="Ingresa tu nombre"
                 />
                 <ErrorMessage
@@ -89,7 +89,7 @@ export default function Home() {
                 <Field
                   id="colegio"
                   name="colegio"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-accent focus:border-accent dark:bg-gray-700 dark:text-white"
                   placeholder="Ingresa el nombre del colegio"
                 />
                 <ErrorMessage
@@ -111,7 +111,7 @@ export default function Home() {
                   id="edad"
                   name="edad"
                   type="number"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-accent focus:border-accent dark:bg-gray-700 dark:text-white"
                   placeholder="Ingresa tu edad"
                 />
                 <ErrorMessage
@@ -133,7 +133,7 @@ export default function Home() {
                   as="textarea"
                   id="mensaje"
                   name="mensaje"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-accent focus:border-accent dark:bg-gray-700 dark:text-white"
                   placeholder="Ingresa un mensaje"
                 />
                 <ErrorMessage
@@ -151,14 +151,14 @@ export default function Home() {
                 <input
                   type="file"
                   onChange={handleImageChange}
-                  className="mt-1 block w-full text-gray-900 dark:text-gray-100 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700"
+                  className="mt-1 block w-full text-gray-900 dark:text-gray-100 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent file:text-white hover:file:bg-accent"
                 />
               </div>
 
               {/* Botón de Enviar */}
               <button
                 type="submit"
-                className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-accent hover:bg-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
               >
                 Enviar
               </button>

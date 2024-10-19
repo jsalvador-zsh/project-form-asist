@@ -17,11 +17,14 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Geist Mono', monospace;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+.font-cursive {
+  font-family: 'Parisienne', cursive;
 }
