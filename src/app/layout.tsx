@@ -28,9 +28,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header />
         <main className="bg-gray-100 dark:bg-gray-900 transition-colors">
-          <Countdown />
           {children}
         </main>
       </body>
