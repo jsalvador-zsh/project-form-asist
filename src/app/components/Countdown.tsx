@@ -34,7 +34,7 @@ const Countdown: React.FC = () => {
   }, [targetDate]);
 
   return (
-    <div className="text-center px-6 py-12 bg-accent text-white">
+    <div className="text-center px-6 py-12 bg-primary text-white">
       <div className="container mx-auto max-w-7xl flex items-center justify-center md:justify-evenly space-x-12">
         <p className="flex flex-col items-center justify-center text-center font-light text-2xl md:text-5xl">{timeLeft.days} <span className="block capitalize text-xs md:text-base font-extralight">días</span></p>
         <p className="flex flex-col items-center justify-center text-center font-light text-2xl md:text-5xl">{timeLeft.hours} <span className="block capitalize text-xs md:text-base font-extralight">horas</span></p>

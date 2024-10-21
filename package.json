@@ -9,8 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/arizonia": "^5.1.0",
     "@fontsource/geist-mono": "^5.1.0",
-    "@fontsource/parisienne": "^5.1.0",
+    "@fontsource/geist-sans": "^5.1.0",
     "axios": "^1.7.7",
     "formik": "^2.4.6",
     "mongodb": "^6.9.0",

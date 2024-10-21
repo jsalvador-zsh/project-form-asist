@@ -8,10 +8,13 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/arizonia':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@fontsource/geist-mono':
         specifier: ^5.1.0
         version: 5.1.0
-      '@fontsource/parisienne':
+      '@fontsource/geist-sans':
         specifier: ^5.1.0
         version: 5.1.0
       axios:
@@ -67,11 +70,14 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
+  '@fontsource/arizonia@5.1.0':
+    resolution: {integrity: sha512-A31W/ZNLtJ4Q8l7YrpcOVaQHaWYt5sOO682bPbDWxJngluNRWu20mNNr/PVUoILQJPV3e4wNQt0xxGqcQMUS3g==}
+
   '@fontsource/geist-mono@5.1.0':
     resolution: {integrity: sha512-MDFgmKUdDbV357vD2bOZAro597Nd2md01GAdr3GSZteCJQdPT/UhHUBCAxl9KUiH03aMPFM9Rx7x8/EtrJmpKg==}
 
-  '@fontsource/parisienne@5.1.0':
-    resolution: {integrity: sha512-Cm1rpfIgL3NxNre4WWU5j/EcoXXmG9PHhwnWnQYkiK56iH3mhGaaU262VftNYaNhXL/1Ozbqyi7LcuOcFwvuwg==}
+  '@fontsource/geist-sans@5.1.0':
+    resolution: {integrity: sha512-4AI/UxIcZiYgK6/cTo4R9oM4VHHLcFdHVv7m2+M42VyY16hhKJADrGe4HPjTxvolmce2IZX/jc6sFJ+GkLB64w==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -845,9 +851,11 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
+  '@fontsource/arizonia@5.1.0': {}
+
   '@fontsource/geist-mono@5.1.0': {}
 
-  '@fontsource/parisienne@5.1.0': {}
+  '@fontsource/geist-sans@5.1.0': {}
 
   '@isaacs/cliui@8.0.2':
     dependencies:

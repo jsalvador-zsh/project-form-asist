@@ -22,24 +22,24 @@ export default function TablaRegistros() {
   }, []);
 
   return (
-    <div className="w-full max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
-      <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">Registros de Asistencia</h1>
+    <div className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+      <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">Registros de Asistencia</h1>
       <table className="min-w-full table-auto">
         <thead>
           <tr>
-            <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">Nombre</th>
-            <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">Colegio</th>
-            <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">Nro Invitados</th>
-            <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">Asistencia</th>
+            <th className="px-4 py-2 text-left text-gray-700">Nombre</th>
+            <th className="px-4 py-2 text-left text-gray-700">Colegio</th>
+            <th className="px-4 py-2 text-left text-gray-700">Nro Invitados</th>
+            <th className="px-4 py-2 text-left text-gray-700">Asistencia</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user, index) => (
             <tr key={index}>
-              <td className="border px-4 py-2 text-gray-700 dark:text-gray-300">{user.nombres}</td>
-              <td className="border px-4 py-2 text-gray-700 dark:text-gray-300">{user.colegio}</td>
-              <td className="border px-4 py-2 text-gray-700 dark:text-gray-300">{user.nroInvitados}</td>
-              <td className="border px-4 py-2 text-gray-700 dark:text-gray-300">
+              <td className="border px-4 py-2 text-gray-700">{user.nombres}</td>
+              <td className="border px-4 py-2 text-gray-700">{user.colegio}</td>
+              <td className="border px-4 py-2 text-gray-700">{user.nroInvitados}</td>
+              <td className="border px-4 py-2 text-gray-700">
                 <input type="checkbox" />
               </td>
             </tr>

@@ -46,10 +46,10 @@ export default function Formulario() {
     };
 
     return (
-        <div className="my-16 px-4 md:px-4 lg:px-0 flex items-center justify-center">
-            <div className="w-full max-w-lg bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 space-y-6">
+        <div className="my-16 px-4 md:px-4 lg:px-0 flex flex-col-reverse md:grid md:grid-cols-2 items-center justify-center gap-12 md:gap-24 md:max-w-5xl mx-auto">
+            <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-8 space-y-6">
                 <Toaster position="top-right" /> {/* Posición del Toast */}
-                <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
+                <h1 className="text-3xl font-bold text-center text-gray-800">
                     Formulario de Asistencia
                 </h1>
                 <Formik
@@ -63,14 +63,14 @@ export default function Formulario() {
                             <div>
                                 <label
                                     htmlFor="nombres"
-                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                    className="block text-sm font-medium text-gray-700"
                                 >
                                     Nombres
                                 </label>
                                 <Field
                                     id="nombres"
                                     name="nombres"
-                                    className="mt-1 block w-full px-3 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-accent focus:border-accent dark:bg-gray-700 dark:text-white"
+                                    className="mt-1 block w-full px-3 py-2 text-sm md:text-base border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
                                     placeholder="Ingresa tu nombre"
                                 />
                                 <ErrorMessage
@@ -84,14 +84,14 @@ export default function Formulario() {
                             <div>
                                 <label
                                     htmlFor="colegio"
-                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                    className="block text-sm font-medium text-gray-700"
                                 >
                                     Colegio
                                 </label>
                                 <Field
                                     id="colegio"
                                     name="colegio"
-                                    className="mt-1 block w-full px-3 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-accent focus:border-accent dark:bg-gray-700 dark:text-white"
+                                    className="mt-1 block w-full px-3 py-2 text-sm md:text-base border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
                                     placeholder="Ingresa el nombre del colegio"
                                 />
                                 <ErrorMessage
@@ -105,7 +105,7 @@ export default function Formulario() {
                             <div>
                                 <label
                                     htmlFor="edad"
-                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                    className="block text-sm font-medium text-gray-700"
                                 >
                                     Edad
                                 </label>
@@ -113,7 +113,7 @@ export default function Formulario() {
                                     id="edad"
                                     name="edad"
                                     type="number"
-                                    className="mt-1 block w-full px-3 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-accent focus:border-accent dark:bg-gray-700 dark:text-white"
+                                    className="mt-1 block w-full px-3 py-2 text-sm md:text-base border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
                                     placeholder="Ingresa tu edad"
                                 />
                                 <ErrorMessage
@@ -126,7 +126,7 @@ export default function Formulario() {
                             <div>
                               <label
                                     htmlFor="nroInvitados"
-                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                    className="block text-sm font-medium text-gray-700"
                                 >
                                     Número de Invitados
                                 </label>
@@ -134,7 +134,7 @@ export default function Formulario() {
                                     id="nroInvitados"
                                     name="nroInvitados"
                                     type="number"
-                                    className="mt-1 block w-full px-3 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-accent focus:border-accent dark:bg-gray-700 dark:text-white"
+                                    className="mt-1 block w-full px-3 py-2 text-sm md:text-base border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
                                     placeholder="Ingresa tu nro. de invitados"
                                 />
                                 <ErrorMessage
@@ -147,7 +147,7 @@ export default function Formulario() {
                             <div>
                                 <label
                                     htmlFor="mensaje"
-                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                    className="block text-sm font-medium text-gray-700"
                                 >
                                     Mensaje
                                 </label>
@@ -155,7 +155,7 @@ export default function Formulario() {
                                     as="textarea"
                                     id="mensaje"
                                     name="mensaje"
-                                    className="mt-1 block w-full px-3 py-2 text-sm md:text-base border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-accent focus:border-accent dark:bg-gray-700 dark:text-white"
+                                    className="mt-1 block w-full px-3 py-2 text-sm md:text-base border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
                                     placeholder="Ingresa un mensaje"
                                 />
                                 <ErrorMessage
@@ -167,26 +167,29 @@ export default function Formulario() {
 
                             {/* Campo para Subir Imagen */}
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                <label className="block text-sm font-medium text-gray-700">
                                     Subir Imagen
                                 </label>
                                 <input
                                     type="file"
                                     onChange={handleImageChange}
-                                    className="mt-1 block w-full text-xs md:text-base text-gray-900 dark:text-gray-100 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs md:file:text-sm file:font-semibold file:bg-accent file:text-white hover:file:bg-accent"
+                                    className="mt-1 block w-full text-xs md:text-base text-gray-900  file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs md:file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-primary"
                                 />
                             </div>
 
                             {/* Botón de Enviar */}
                             <button
                                 type="submit"
-                                className="w-full py-3 px-4 text-sm md:text-base border border-transparent rounded-md shadow-sm text-white bg-accent hover:bg-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+                                className="w-full py-3 px-4 text-sm md:text-base border border-transparent rounded-md shadow-sm text-white bg-primary hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                             >
                                 Enviar
                             </button>
                         </Form>
                     )}
                 </Formik>
+            </div>
+            <div className="mx-auto">
+            <img src="/coco.svg" alt="imagen bebida hawaiana" className="h-64 md:h-96" />
             </div>
         </div>
     );
